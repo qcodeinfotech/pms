@@ -3,6 +3,8 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -47,4 +49,16 @@ class User extends Authenticatable
     const ROLE_ADMIN = 'admin';
     const ROLE_USER = 'user';
     const ROLE_COMPANY = 'company';
+
+    /**
+     * Get the user's first name.
+     */
+    protected function imgAvatar(): Attribute
+    {
+        return Attribute::make(
+            get: function ($value) {
+                return asset('theme/img/user.png');
+            }
+        );
+    }
 }

@@ -7,8 +7,9 @@
             <a href="{{ url('/') }}">St</a>
         </div>
         <ul class="sidebar-menu">
-            <li><a class="nav-link" href="credits.html"><i class="fas fa-pencil-ruler"></i>
-                    <span>@lang('menu.dashboard')</span>
+            <li class="{{ request()->route()->getName() == 'admin.dashboard'? 'active': '' }}">
+                <a class="nav-link" href="{{ route('admin.dashboard') }}"><i class="fas fa-pencil-ruler"></i>
+                    <span>@lang('msg.menu.dashboard')</span>
                 </a>
             </li>
         </ul>

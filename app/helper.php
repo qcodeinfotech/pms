@@ -7,6 +7,11 @@ function getAppName()
     return config('app.name');
 }
 
+function logInUser()
+{
+    return Auth::user();
+}
+
 function redirectTo()
 {
     $user = Auth::user();
