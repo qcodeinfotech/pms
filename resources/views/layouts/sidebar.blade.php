@@ -12,6 +12,12 @@
                     <span>@lang('msg.menu.dashboard')</span>
                 </a>
             </li>
+
+            <li class="{{ request()->route()->getName() == 'admin.companies.index'? 'active': '' }}">
+                <a class="nav-link" href="{{ route('admin.companies.index') }}"><i class="fas fa-pencil-ruler"></i>
+                    <span>@lang('msg.menu.companies')</span>
+                </a>
+            </li>
         </ul>
     </aside>
 </div>
