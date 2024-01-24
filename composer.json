@@ -13,6 +13,7 @@
         "laravel/framework": "^10.10",
         "laravel/sanctum": "^3.3",
         "laravel/tinker": "^2.8",
+        "laravelcollective/html": "^6.4",
         "lorisleiva/laravel-actions": "^2.7",
         "rappasoft/laravel-livewire-tables": "^3.2",
         "spatie/laravel-flash": "^1.9",

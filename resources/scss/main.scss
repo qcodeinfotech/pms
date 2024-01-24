@@ -14,7 +14,22 @@
 .image-preview {
     width: 150px;
     height: 150px;
+    cursor: pointer !important;
     label {
         background-color: #24486a;
     }
+}
+
+th {
+    color: white !important;
+}
+
+thead {
+    background: #24486a !important;
+    border-top-left-radius: 5px !important;
+    border-top-right-radius: 5px !important;
+}
+
+.text-muted {
+    color: #24486a !important;
 }

@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Actions\Company\StoreCompany;
+use App\Models\User;
 use Illuminate\Http\Request;
-use Password;
 
 class CompanyController extends Controller
 {
@@ -17,10 +18,25 @@ class CompanyController extends Controller
         return view('companies.create');
     }
 
+    public function edit($id)
+    {
+        $user = User::findOrFail($id);
+
+        return view('companies.edit', compact('user'));
+    }
+
+
     public function store(Request $request)
     {
         $request->validate([
-            'password' => ['required', 'confirmed'],
+            'email' => ['unique:users'],
+            'password' => ['required'],
         ]);
+
+        StoreCompany::run($request->all());
+
+        flash()->success("Company created successfully");
+
+        return redirect(route('admin.companies.index'));
     }
 }

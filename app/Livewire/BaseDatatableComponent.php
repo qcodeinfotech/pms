@@ -15,7 +15,7 @@ class BaseDatatableComponent extends DataTableComponent
     public $showButtonOnHeader = false;
     public $buttonComponent = '';
 
-    public array $perPageAccepted = [1, 25, 50];
+    public array $perPageAccepted = [10, 25, 50];
 
     public function configure(): void
     {

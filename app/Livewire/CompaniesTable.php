@@ -21,18 +21,18 @@ class CompaniesTable extends BaseDatatableComponent
     public function columns(): array
     {
         return [
-            Column::make("Name", 'name'),
+            Column::make("Name", 'name')->format(
+                fn ($value, $row, Column $column) => "<img src=$row->img_avatar class='img-thumbnail height-50 m-1' />" . " " . $value
+            )->html(),
 
-            // Column::make("Topic", 'topic.title'),
-
-            // Column::make("Actions", 'id')
-            //     ->format(
-            //         fn ($value, $row, Column $column) => view('common.livewire-tables.actions', [
-            //             'recordId' => $row->id,
-            //             'showUrl' => route('user.quiz.show', $row->id),
-            //             'deleteUrl' => route('user.quiz.destroy', $row->id),
-            //         ])
-            //     )
+            Column::make("Action", 'id')->format(
+                fn ($value, $row, Column $column) => view('components.actions', [
+                    'showUrl' => route('admin.companies.show', $row->id),
+                    'editUrl' => route('admin.companies.edit', $row->id),
+                    'deleteUrl' => route('admin.companies.destroy', $row->id),
+                    'recordId' => $row->id,
+                ])
+            )->html(),
         ];
     }
 

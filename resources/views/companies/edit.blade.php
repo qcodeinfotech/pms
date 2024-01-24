@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title')
-    @lang('Create Company')
+    @lang('Edit Company')
 @endsection
 
 @push('content')
@@ -10,7 +10,7 @@
                 @include('components.flash')
                 <div class="card">
                     <div class="card-body">
-                        {{ Form::open(['url' => route('admin.companies.store'), 'method' => 'post', 'files' => true]) }}
+                        {{ Form::model($user, ['url' => route('admin.companies.update', [$user->id]), 'method' => 'post', 'files' => true]) }}
                         @csrf
                         @include('companies.fields')
                         {{ Form::close() }}
