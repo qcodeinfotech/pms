@@ -25,9 +25,11 @@
         {{ Form::password('confirm_password', ['class' => 'form-control', $required]) }}
     </div>
     <div class="form-group col-3">
-        <div id="image-preview" class="image-preview">
+        <div id="image-preview" class="image-preview"
+            @isset($user)
+                style="background-image: url('{{ $user->img_avatar }}')"@endisset>
             <label for="image-upload" id="image-label">Change File</label>
-            <input type="file" name="image" id="image-upload">
+            <input type="file" name="image" id="image-upload" accept="image/*">
         </div>
     </div>
     <div class="col-sm-12 col-md-7">

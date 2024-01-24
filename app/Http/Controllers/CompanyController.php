@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Actions\Company\StoreCompany;
+use App\Actions\Company\UpdateCompany;
 use App\Models\User;
+use Hash;
 use Illuminate\Http\Request;
 
 class CompanyController extends Controller
@@ -29,8 +31,9 @@ class CompanyController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'email' => ['unique:users'],
-            'password' => ['required'],
+            'email' => 'unique:users',
+            'image' => 'mimes:jpg,bmp,png,jpeg,webp,gif',
+            'password' => 'required',
         ]);
 
         StoreCompany::run($request->all());
@@ -38,5 +41,21 @@ class CompanyController extends Controller
         flash()->success("Company created successfully");
 
         return redirect(route('admin.companies.index'));
+    }
+
+    public function update($id, Request $request)
+    {
+        UpdateCompany::run($id, $request->all());
+        flash()->success("User updated successfully");
+
+        return redirect(route('admin.companies.index'));
+    }
+
+    public function destroy($id)
+    {
+        $user = User::findOrFail($id);
+        $user->delete();
+
+        return $this->sendMessage("Company deleted successfully");
     }
 }

@@ -13,9 +13,9 @@
                 </a>
             </li>
 
-            <li class="{{ request()->route()->getName() == 'admin.companies.index'? 'active': '' }}">
+            <li class="{{ Request::is('admin/companies*') ? 'active' : '' }}">
                 <a class="nav-link" href="{{ route('admin.companies.index') }}"><i class="fas fa-pencil-ruler"></i>
-                    <span>@lang('msg.menu.companies')</span>
+                    <span>@lang('Companies')</span>
                 </a>
             </li>
         </ul>

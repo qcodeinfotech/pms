@@ -14,6 +14,7 @@
         integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ asset('theme/backend/assets/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('theme/backend/assets/css/components.css') }}">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
     @vite('resources/scss/main.scss')
 </head>
 
@@ -51,16 +52,12 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.nicescroll/3.7.6/jquery.nicescroll.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script src="{{ asset('theme/backend/assets/js/stisla.js') }}"></script>
-
-    <!-- JS Libraies -->
-
-    <!-- Template JS File -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <script src="{{ asset('theme/backend/assets/js/scripts.js') }}"></script>
     <script src="{{ asset('theme/backend/assets/js/page/upload-preview.js') }}"></script>
     <script src="{{ asset('theme/backend/assets/js/custom.js') }}"></script>
     @vite('resources/js/custom.js')
-    <!-- Page Specific JS File -->
-
 </body>
 
 </html>
