@@ -19,4 +19,8 @@ function redirectTo()
     if ($user->hasRole(User::ROLE_ADMIN)) {
         return route('admin.dashboard');
     }
+
+    if ($user->hasRole(User::ROLE_COMPANY)) {
+        return route('company.dashboard');
+    }
 }

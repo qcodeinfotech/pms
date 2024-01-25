@@ -1,28 +1,27 @@
 <?php
 
-namespace App\Livewire;
+namespace App\Livewire\Company;
 
 use App\Livewire\BaseDatatableComponent;
-use App\Models\User;
+use App\Models\Project;
+use Auth;
 use Carbon\Carbon;
-use Illuminate\Contracts\Foundation\Application;
-use Illuminate\Contracts\View\Factory;
-use Illuminate\Contracts\View\View;
 use Illuminate\Database\Eloquent\Builder;
+use Livewire\Component;
 use Rappasoft\LaravelLivewireTables\Views\Column;
 
-class CompaniesTable extends BaseDatatableComponent
+class ProjectsTable extends BaseDatatableComponent
 {
-    protected $model = User::class;
-
     public function columns(): array
     {
         return [
             Column::make("Name", 'name')->format(
-                fn ($value, $row, Column $column) => "<img src=$row->img_avatar class='img-thumbnail tbl-img m-1' />" . " " . $value
-            )->html()->sortable(),
+                fn ($value, $row, Column $column) => $value
+            )->sortable(),
 
-            Column::make("Email", 'email')->sortable(),
+            Column::make("Users", 'id')->format(
+                fn ($value, $row, Column $column) => "<span class='badge badge-secondary'>$row->users_count</span>"
+            )->html()->sortable(),
 
             Column::make("Created At", 'created_at')->format(
                 fn ($value, $row, Column $column) => Carbon::parse($value)->diffForHumans()
@@ -30,9 +29,9 @@ class CompaniesTable extends BaseDatatableComponent
 
             Column::make("Action", 'id')->format(
                 fn ($value, $row, Column $column) => view('components.actions', [
-                    'showUrl' => route('admin.companies.show', $row->id),
-                    'editUrl' => route('admin.companies.edit', $row->id),
-                    'deleteUrl' => route('admin.companies.destroy', $row->id),
+                    'showUrl' => route('company.projects.show', $row->id),
+                    'editUrl' => route('company.projects.edit', $row->id),
+                    'deleteUrl' => route('company.projects.destroy', $row->id),
                     'recordId' => $row->id,
                 ])
             )->html(),
@@ -41,7 +40,7 @@ class CompaniesTable extends BaseDatatableComponent
 
     public function builder(): Builder
     {
-        $query = User::role(User::ROLE_COMPANY);
+        $query = Project::whereUserId(Auth::id())->withCount('users');
 
         return $query;
     }

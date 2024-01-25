@@ -1,17 +1,15 @@
 <?php
 
-namespace App\Livewire;
+namespace App\Livewire\Company;
 
 use App\Livewire\BaseDatatableComponent;
 use App\Models\User;
+use Auth;
 use Carbon\Carbon;
-use Illuminate\Contracts\Foundation\Application;
-use Illuminate\Contracts\View\Factory;
-use Illuminate\Contracts\View\View;
 use Illuminate\Database\Eloquent\Builder;
 use Rappasoft\LaravelLivewireTables\Views\Column;
 
-class CompaniesTable extends BaseDatatableComponent
+class UsersTable extends BaseDatatableComponent
 {
     protected $model = User::class;
 
@@ -24,15 +22,19 @@ class CompaniesTable extends BaseDatatableComponent
 
             Column::make("Email", 'email')->sortable(),
 
+            Column::make("Projects", 'id')->format(
+                fn ($value, $row, Column $column) => "<span class='badge badge-warning'>XXX</span>"
+            )->html()->sortable(),
+
             Column::make("Created At", 'created_at')->format(
                 fn ($value, $row, Column $column) => Carbon::parse($value)->diffForHumans()
             )->sortable(),
 
             Column::make("Action", 'id')->format(
                 fn ($value, $row, Column $column) => view('components.actions', [
-                    'showUrl' => route('admin.companies.show', $row->id),
-                    'editUrl' => route('admin.companies.edit', $row->id),
-                    'deleteUrl' => route('admin.companies.destroy', $row->id),
+                    'showUrl' => route('company.users.show', $row->id),
+                    'editUrl' => route('company.users.edit', $row->id),
+                    'deleteUrl' => route('company.users.destroy', $row->id),
                     'recordId' => $row->id,
                 ])
             )->html(),
@@ -41,7 +43,7 @@ class CompaniesTable extends BaseDatatableComponent
 
     public function builder(): Builder
     {
-        $query = User::role(User::ROLE_COMPANY);
+        $query = User::role(User::ROLE_USER)->whereCompanyUserId(Auth::id());
 
         return $query;
     }

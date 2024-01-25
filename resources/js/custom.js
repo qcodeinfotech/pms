@@ -9,6 +9,9 @@ $(document).ready(function () {
         success_callback: null, // Default: null
     });
 
+    $('.select2').select2();
+
+
     $.ajaxSetup({
         headers: {
             "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
