@@ -12,6 +12,8 @@ class BaseDatatableComponent extends DataTableComponent
     public bool $sortingPillsStatus = false;
     public bool $columnSelectStatus = false;
 
+    public string $defaultSortDirection = 'desc';
+
     public $showButtonOnHeader = false;
     public $buttonComponent = '';
 

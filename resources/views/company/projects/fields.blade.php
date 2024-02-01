@@ -7,8 +7,8 @@
         {{ Form::text('name', null, ['class' => 'form-control', 'required']) }}
     </div>
     <div class="form-group col-6">
-        <label>@lang('Assign Users')</label>
-        {{ Form::select('users[]', $users, $selectedUsers ?? [], ['class' => 'form-control select2', 'multiple']) }}
+        <label>@lang('Assign Users')</label><span class="required">*</span />
+        {{ Form::select('users[]', $users, $selectedUsers ?? [], ['class' => 'form-control select2', 'multiple', 'required']) }}
     </div>
     <div class="form-group col-12">
         <label>@lang('Description')</label>

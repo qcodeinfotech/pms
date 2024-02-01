@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     @vite('resources/scss/main.scss')
+    @routes
 </head>
 
 <body>
@@ -42,6 +43,7 @@
         </div>
     </div>
 
+    @stack('extra')
     <!-- General JS Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
@@ -59,6 +61,7 @@
     <script src="{{ asset('theme/backend/assets/js/page/upload-preview.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script src="{{ asset('theme/backend/assets/js/custom.js') }}"></script>
+    @stack('js')
     @vite('resources/js/custom.js')
 </body>
 

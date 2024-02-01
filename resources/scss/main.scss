@@ -52,3 +52,7 @@ thead {
     .select2-results__option--highlighted.select2-results__option--selectable {
     background-color: #24486a !important;
 }
+
+.modal-footer {
+    display: unset !important;
+}

@@ -18,9 +18,14 @@
                 </a>
             </li>
 
-               <li class="{{ Request::is('company/projects*') ? 'active' : '' }}">
+            <li class="{{ Request::is('company/projects*') ? 'active' : '' }}">
                 <a class="nav-link" href="{{ route('company.projects.index') }}"><i class="fas fa-pencil-ruler"></i>
                     <span>@lang('Projects')</span>
+                </a>
+            </li>
+            <li class="{{ Request::is('company/status*') ? 'active' : '' }}">
+                <a class="nav-link" href="{{ route('company.status.index') }}"><i class="fas fa-pencil-ruler"></i>
+                    <span>@lang('Status')</span>
                 </a>
             </li>
         </ul>

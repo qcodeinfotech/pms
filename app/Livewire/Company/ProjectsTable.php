@@ -12,6 +12,8 @@ use Rappasoft\LaravelLivewireTables\Views\Column;
 
 class ProjectsTable extends BaseDatatableComponent
 {
+    public ?string $defaultSortColumn = 'created_at';
+
     public function columns(): array
     {
         return [

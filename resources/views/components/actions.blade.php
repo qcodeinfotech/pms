@@ -6,15 +6,23 @@
     </a>
 @endif
 @if (isset($editUrl))
-    <a class="btn btn-info btn-sm" href="{{ $editUrl }}">
-        <i class="fas fa-pencil-alt">
-        </i>
-        Edit
-    </a>
+    @if (isset($modal))
+        <a class="btn btn-info btn-sm edit-btn" data-id="{{ $recordId }}" href="#">
+            <i class="fas fa-pencil-alt">
+            </i>
+            Edit
+        </a>
+    @else
+        <a class="btn btn-info btn-sm edit-btn" data-id="{{ $recordId }}" href="{{ $editUrl }}">
+            <i class="fas fa-pencil-alt">
+            </i>
+            Edit
+        </a>
+    @endif
 @endif
 @if (isset($deleteUrl))
-    <a class="btn btn-danger btn-sm" href="#"
-        onclick="deleteRecord('{{ $deleteUrl }}', '{{ $recordId }}', 'Record')">
+    <a class="btn btn-danger btn-sm" href="#" data-id="{{ $recordId }}"
+        onclick="deleteRecord('{{ $deleteUrl }}')">
         <i class="fas fa-trash">
         </i>
         Delete

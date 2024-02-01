@@ -58,6 +58,8 @@
     <script src="{{ asset('theme/backend/assets/js/page/upload-preview.js') }}"></script>
     <script src="{{ asset('theme/backend/assets/js/custom.js') }}"></script>
     @vite('resources/js/custom.js')
+
+
 </body>
 
 </html>

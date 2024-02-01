@@ -9,14 +9,7 @@ $(document).ready(function () {
         success_callback: null, // Default: null
     });
 
-    $('.select2').select2();
-
-
-    $.ajaxSetup({
-        headers: {
-            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
-        },
-    });
+    $(".select2").select2();
 
     toastr.options = {
         closeButton: true,
@@ -36,30 +29,50 @@ $(document).ready(function () {
         hideMethod: "fadeOut",
     };
 
-    window.deleteRecord = function (route) {
-        Swal.fire({
-            title: "Are you sure?",
-            text: "You won't be able to revert this!",
-            icon: "warning",
-            showCancelButton: true,
-            confirmButtonColor: "#d33",
-            cancelButtonColor: "#3085d6",
-            confirmButtonText: "Yes, delete it!",
-        }).then((result) => {
-            if (result.isConfirmed) {
-                $.ajax({
-                    url: route,
-                    type: "DELETE",
-                    dataType: "json",
-                    success: function (obj) {
-                        toastr.success(obj.message);
-                        Livewire.dispatch("refreshDatatable");
-                    },
-                    error: function (data) {
-                        toastr.error(data.responseJSON.message);
-                    },
-                });
-            }
-        });
-    };
+    $(".modal").on("hidden.bs.modal", function (e) {
+        $(this)
+            .find("input,textarea,select")
+            .val("")
+            .end()
+            .find("input[type=checkbox], input[type=radio]")
+            .prop("checked", "")
+            .end();
+    });
 });
+
+$.ajaxSetup({
+    headers: {
+        "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+    },
+});
+
+window.refreshDatatable = function () {
+    Livewire.dispatch("refreshDatatable");
+};
+
+window.deleteRecord = function (route) {
+    Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#d33",
+        cancelButtonColor: "#3085d6",
+        confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+        if (result.isConfirmed) {
+            $.ajax({
+                url: route,
+                type: "DELETE",
+                dataType: "json",
+                success: function (obj) {
+                    toastr.success(obj.message);
+                    refreshDatatable();
+                },
+                error: function (data) {
+                    toastr.error(data.responseJSON.message);
+                },
+            });
+        }
+    });
+};

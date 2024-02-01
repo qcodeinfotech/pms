@@ -11,6 +11,7 @@ use Rappasoft\LaravelLivewireTables\Views\Column;
 
 class UsersTable extends BaseDatatableComponent
 {
+    public ?string $defaultSortColumn = 'created_at';
     protected $model = User::class;
 
     public function columns(): array
