@@ -3,6 +3,7 @@
 use App\Actions\Company\CompanyDashboard;
 use App\Http\Controllers\Company\ProjectController;
 use App\Http\Controllers\Company\StatusController;
+use App\Http\Controllers\Company\TaskController;
 use App\Http\Controllers\Company\UserController;
 
 Route::middleware('auth')->prefix('company')->as('company.')->group(function () {
@@ -19,4 +20,8 @@ Route::middleware('auth')->prefix('company')->as('company.')->group(function () 
     // Status
     Route::resource('status', StatusController::class);
     Route::post('status/{id}', [StatusController::class, 'update'])->name('status.update');
+
+    // Status
+    Route::resource('tasks', TaskController::class);
+    Route::post('tasks/{id}', [TaskController::class, 'update'])->name('tasks.update');
 });

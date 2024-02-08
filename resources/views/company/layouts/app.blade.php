@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="{{ asset('theme/backend/assets/css/components.css') }}">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     @vite('resources/scss/main.scss')
     @routes
 </head>
@@ -55,6 +56,7 @@
     <script src="{{ asset('theme/backend/assets/js/scripts.js') }}"></script>
     <script src="{{ asset('theme/backend/assets/js/page/upload-preview.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script src="{{ asset('theme/backend/assets/js/custom.js') }}"></script>
     @stack('js')
     @vite('resources/js/custom.js')

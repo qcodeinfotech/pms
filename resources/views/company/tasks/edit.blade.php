@@ -1,6 +1,6 @@
 @extends('company.layouts.app')
 @section('title')
-    @lang('Create Task')
+    @lang('Edit Task')
 @endsection
 
 @push('content')
@@ -10,7 +10,7 @@
                 @include('components.flash')
                 <div class="card">
                     <div class="card-body">
-                        {{ Form::open(['url' => route('company.tasks.store'), 'method' => 'post']) }}
+                        {{ Form::model($task, ['url' => route('company.tasks.update', [$task->id]), 'method' => 'post', 'files' => true]) }}
                         @csrf
                         @include('company.tasks.fields')
                         {{ Form::close() }}

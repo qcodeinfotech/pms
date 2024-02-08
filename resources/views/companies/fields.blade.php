@@ -33,7 +33,7 @@
         </div>
     </div>
     <div class="col-sm-12 col-md-7">
-        <button class="btn btn-primary">@lang('Save')</button>
-        <button class="btn btn-primary">@lang('Cancel')</button>
+        <button class="btn btn-primary" type="submit">@lang('Save')</button>
+        <a href="{{ route('admin.companies.index') }}" class="btn btn-primary">@lang('Cancel')</a>
     </div>
 </div>

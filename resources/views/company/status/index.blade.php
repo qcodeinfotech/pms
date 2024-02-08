@@ -1,6 +1,6 @@
 @extends('company.layouts.app')
 @section('title')
-    @lang('Status')
+    @lang('Task Status')
 @endsection
 
 @push('buttons')

@@ -52,7 +52,11 @@ thead {
     .select2-results__option--highlighted.select2-results__option--selectable {
     background-color: #24486a !important;
 }
-
+.select2-container--default
+    .select2-selection--single
+    .select2-selection__rendered {
+    line-height: 40px;
+}
 .modal-footer {
     display: unset !important;
 }
@@ -63,7 +67,7 @@ thead {
 }
 
 .main-content {
-    padding-top: 120px !important;
+    padding-top: 100px !important;
 }
 
 body {
@@ -77,4 +81,12 @@ body {
 
 .sidebar-brand {
     border-bottom: 0.05rem solid #eff3f9;
+}
+
+.card {
+    border-radius: 0.63rem !important;
+}
+
+.form-label {
+    // font-weight: 500px;
 }

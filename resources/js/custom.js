@@ -9,7 +9,11 @@ $(document).ready(function () {
         success_callback: null, // Default: null
     });
 
-    $(".select2").select2();
+    // $(".select2").select2();
+
+    flatpickr(".flatpicker", {
+        allowInput: true,
+    });
 
     toastr.options = {
         closeButton: true,

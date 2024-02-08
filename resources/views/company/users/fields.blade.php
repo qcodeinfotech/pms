@@ -34,6 +34,6 @@
     </div>
     <div class="col-sm-12 col-md-7">
         <button class="btn btn-primary">@lang('Save')</button>
-        <button class="btn btn-primary">@lang('Cancel')</button>
+        <a href="{{ route('company.users.index') }}" class="btn btn-primary">@lang('Cancel')</a>
     </div>
 </div>

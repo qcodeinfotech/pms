@@ -25,7 +25,12 @@
             </li>
             <li class="{{ Request::is('company/status*') ? 'active' : '' }}">
                 <a class="nav-link" href="{{ route('company.status.index') }}"><i class="fas fa-pencil-ruler"></i>
-                    <span>@lang('Status')</span>
+                    <span>@lang('Task Status')</span>
+                </a>
+            </li>
+            <li class="{{ Request::is('company/tasks*') ? 'active' : '' }}">
+                <a class="nav-link" href="{{ route('company.tasks.index') }}"><i class="fas fa-pencil-ruler"></i>
+                    <span>@lang('Tasks')</span>
                 </a>
             </li>
         </ul>
